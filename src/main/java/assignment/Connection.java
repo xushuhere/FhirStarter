@@ -23,7 +23,7 @@ public class Connection {
 
 
     public static void main(String[] args) {
-        //Connection conn = new Connection("https://fhirtesting.hdap.gatech.edu/hapi-fhir-jpaserver-example/baseDstu3");
+        //Connection conn = new Connection("https://fhirtesting.hdap.gatech.edu/hapi-fhir-jpaserver-example/");
         Connection conn = new Connection("http://localhost:8080/hapi-fhir-jpaserver-example/baseDstu2");
         System.out.println(conn.getClient());
     }

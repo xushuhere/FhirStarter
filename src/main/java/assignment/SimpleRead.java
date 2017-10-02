@@ -17,6 +17,8 @@ public class SimpleRead {
     private Connection connection = null;
 
     public SimpleRead(Connection connection) {
+        org.apache.log4j.BasicConfigurator.configure();
+
         this.connection = connection;
     }
 
@@ -26,7 +28,6 @@ public class SimpleRead {
         Patient pat = this.connection.getClient().read(Patient.class,id);
         HumanNameDt patName = pat.getName().get(0);
         name = patName.getNameAsSingleString();
-
 
 
         return name;
@@ -55,8 +56,18 @@ public class SimpleRead {
         //Connection conn = new Connection("https://fhirtest.uhn.ca/baseDstu2");
         SimpleRead sr = new SimpleRead(conn);
         // id value as argument  is invented; you want to change them
-        System.out.println("Name: " + sr.getNameByPatientID("1"));
+        System.out.println("Name:--- " + sr.getNameByPatientID("075786e8-383c-4eee-abb6-264b3b967482"));
         System.out.println(sr.getIDByPatientName("Smith"));
+
+/*
+
+        Connection conn2 = new Connection("https://fhirtesting.hdap.gatech.edu/hapi-fhir-jpaserver-example/#");
+        SimpleRead sr2 = new SimpleRead(conn2);
+        // id value as argument  is invented; you want to change them
+        System.out.println("Name:--- " + sr2.getNameByPatientID("1e19bb7a-d990-4924-9fae-be84f19c53c1"));
+        System.out.println(sr2.getIDByPatientName("Armstrong"));
+*/
+
 
     }
 
